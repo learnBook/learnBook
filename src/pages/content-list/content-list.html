@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title>List of contents</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-menu id="subTopic" [content]="content" type="overlay">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Table Of Content</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button ion-item *ngFor="let subTopic of subTopics[topic]" (click)="subTopicSelected(subTopic)">
+        {{ subTopic }}
+      </button>
+      <button ion-item (click)="goHome()">
+        Home
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-nav #content [root]="rootPage"></ion-nav>
+
+<ion-content padding>
+    <page-android-course-material></page-android-course-material>
+</ion-content>
