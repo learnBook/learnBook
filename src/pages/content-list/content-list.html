@@ -4,7 +4,7 @@
     <button ion-button menuToggle icon-only>
       <ion-icon name='menu'></ion-icon>
     </button>
-    <ion-title>List of contents</ion-title>
+    <ion-title>{{ subTopic }}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -29,5 +29,58 @@
 <ion-nav #content [root]="rootPage"></ion-nav>
 
 <ion-content padding>
-    <page-android-course-material></page-android-course-material>
+  <!-- previous and next button -->
+  <ion-grid>
+    <ion-row>
+      <ion-col col-3>
+        <button ion-button icon-start small (click)="changeSubTopic('prev')" [disabled]="currentIndex==0">
+          <ion-icon name="arrow-back"></ion-icon>
+          Previous
+        </button>
+      </ion-col>
+      <ion-col col-3>
+
+      </ion-col>
+      <ion-col col-3>
+
+      </ion-col>
+      <ion-col col-3>
+        <button ion-button icon-end small (click)="changeSubTopic('next')" [disabled]="currentIndex==subTopicArrayLength-1">
+          Next
+          <ion-icon name="arrow-forward"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- previous and next button Done-->
+
+    <page-android-course-material [subTopic] = "subTopic" *ngIf="topic=='Android'"></page-android-course-material>
+    <page-cordova-course-material [subTopic] = "subTopic" *ngIf="topic=='Cordova'"></page-cordova-course-material>
+
+  <!-- previous and next button -->
+    <ion-grid>
+      <ion-row>
+        <ion-col col-3>
+          <button ion-button icon-start small (click)="changeSubTopic('prev')" [disabled]="currentIndex==0">
+            <ion-icon name="arrow-back"></ion-icon>
+            Previous
+          </button>
+        </ion-col>
+        <ion-col col-1></ion-col>
+        <ion-col col-5>
+              <button ion-button icon-start small (click)="startTest()" [disabled]="topicCovered.length<subTopicArrayLength">
+                <ion-icon name="paper"></ion-icon>
+                Start Test
+              </button>
+         </ion-col>
+        <ion-col col-3>
+          <button ion-button icon-end small (click)="changeSubTopic('next')" [disabled]="currentIndex==subTopicArrayLength-1">
+            Next
+            <ion-icon name="arrow-forward"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  <!-- previous and next button Done-->
+
 </ion-content>
