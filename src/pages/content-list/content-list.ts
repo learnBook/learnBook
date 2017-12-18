@@ -65,7 +65,6 @@ export class ContentListPage {
      if(this.topicCovered.indexOf(this.currentIndex)==-1){
        this.topicCovered.push(this.currentIndex);
      }
-
   }
 
   goHome(){
